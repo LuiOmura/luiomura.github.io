@@ -3,5 +3,5 @@ txt
 User-agent: *
 Allow: /
 
-Sitemap: https://luiomura.github.io/sitemap.xml
+Sitemap: https://luiomura.com/sitemap.xml
 
