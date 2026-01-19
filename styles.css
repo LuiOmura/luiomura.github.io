@@ -109,4 +109,29 @@ summary{cursor:pointer;font-weight:800}
   }
 }
 
+/* Upgrade 3: Before/After overlay labels */
+.ba {
+  position: relative;
+}
+
+.ba-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,0,0,.65);
+  color: #fff;
+  padding: 6px 10px;
+  font-size: .85rem;
+  border-radius: 10px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  z-index: 2;
+}
+
+/* Optional polish: slightly taller images on desktop */
+@media (min-width: 901px) {
+  .ba img {
+    height: 260px;
+  }
+}
 
