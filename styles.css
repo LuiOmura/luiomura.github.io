@@ -18,9 +18,35 @@ body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  background: transparent;     /* IMPORTANT */
-  position: relative;          /* IMPORTANT */
-  z-index: 0;                  /* IMPORTANT */
+  background: transparent;
+  position: relative;
+  z-index: 0;
+}
+
+/* Background layers */
+.bg-fixed::before,
+.bg-fixed::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg-fixed::before{
+  background: url("/images/homepage.jpg") center / cover no-repeat;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.bg-fixed::after{
+  background: rgba(247,245,239,0.35);
+  z-index: 1;
+}
+
+/* Put page content above the overlays */
+.page{
+  position: relative;
+  z-index: 2;
 }
 
 
@@ -137,6 +163,7 @@ body{
   letter-spacing: 0.5px;
   color: var(--brand2);
   text-shadow: 0 6px 24px rgba(0,0,0,.10);
+
 }
 
 .hero-tagline{
@@ -333,6 +360,5 @@ body{
 .hero-inner {
   position: relative;
   z-index: 2;
-  color: #fff;
   text-align: center;
 }
