@@ -58,7 +58,7 @@ body{
 
 
 /* Make sure your actual page content sits ABOVE the overlays */
-.page,{
+.page{
   position: relative;
   z-index: 2;
 }
