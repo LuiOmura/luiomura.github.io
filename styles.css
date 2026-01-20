@@ -316,5 +316,6 @@ body{
   width: 100%;
   border: 0;
   border-radius: 12px;
+  min-height: 900px;
 }
 
