@@ -20,7 +20,7 @@
   // 1) Your Google Form "formResponse" endpoint:
   // Example format:
   // https://docs.google.com/forms/d/e/FORM_ID/formResponse
-  const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/1FAIpQLSdmQCnaL1LxI5rPXo83IvYppoxIrL8Ztq2pUKsTZcSMw_TxoQ/viewform?usp=header";
+  const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
 
   // 2) Map each website field to its Google Form "entry.X" ID:
   // You MUST replace the values below (entry.111, entry.222...) with your real entry IDs.
