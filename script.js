@@ -54,51 +54,48 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = url;
   }
 
-function postToGoogleForm(data) {
-  // Create hidden iframe target
-  let iframe = document.getElementById("hidden_iframe_gf");
-  if (!iframe) {
-    iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.id = "hidden_iframe_gf";
-    iframe.name = "hidden_iframe_gf";
-    document.body.appendChild(iframe);
+  function postToGoogleForm(data) {
+    let iframe = document.getElementById("hidden_iframe_gf");
+    if (!iframe) {
+      iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.id = "hidden_iframe_gf";
+      iframe.name = "hidden_iframe_gf";
+      document.body.appendChild(iframe);
+    }
+
+    const f = document.createElement("form");
+    f.action = GOOGLE_FORM_ENDPOINT;
+    f.method = "POST";
+    f.target = "hidden_iframe_gf";
+
+    const add = (name, value) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = value || "";
+      f.appendChild(input);
+    };
+
+    add(ENTRY.fullName, data.fullName);
+    add(ENTRY.phone, data.phone);
+    add(ENTRY.email, data.email);
+    add(ENTRY.zip, data.zip);
+    add(ENTRY.project, data.project);
+    add(ENTRY.budget, data.budget);
+    add(ENTRY.details, data.details || "");
+
+    document.body.appendChild(f);
+    f.submit();
+    f.remove();
   }
-
-  // Create hidden form
-  const f = document.createElement("form");
-  f.action = GOOGLE_FORM_ENDPOINT;
-  f.method = "POST";
-  f.target = "hidden_iframe_gf";
-
-  const add = (name, value) => {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = name;
-    input.value = value || "";
-    f.appendChild(input);
-  };
-
-  add(ENTRY.fullName, data.fullName);
-  add(ENTRY.phone, data.phone);
-  add(ENTRY.email, data.email);
-  add(ENTRY.zip, data.zip);
-  add(ENTRY.project, data.project);
-  add(ENTRY.budget, data.budget);
-  add(ENTRY.details, data.details || "");
-
-  document.body.appendChild(f);
-  f.submit();
-  f.remove();
-}
-
 
   if (!form) {
     console.error("Form not found. Check: <form id='quoteForm'> exists in HTML.");
     return;
   }
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("Submit clicked ✅");
 
@@ -119,12 +116,13 @@ function postToGoogleForm(data) {
 
     try {
       setStatus("Submitting…");
+
+      // 1) Submit to Google Form (hidden, reliable)
+      postToGoogleForm(payload);
+
+      // 2) Open email draft (user must click Send)
       const subject = `Quote Request — ${fullName} (${zip})`;
       openMailDraft(subject, buildEmailBody(payload));
-      
-      // Send to Google Form in background (don’t await)
-      postToGoogleForm(payload
-
 
       setStatus("Submitted! Your email draft should open now.");
       form.reset();
