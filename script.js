@@ -1,3 +1,5 @@
+console.log("Quote script loaded");
+
 (() => {
   const setYear = () => {
     const el = document.getElementById("year");
