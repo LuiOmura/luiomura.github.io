@@ -120,7 +120,8 @@ function postToGoogleForm(data) {
       openMailDraft(subject, buildEmailBody(payload));
       
       // Send to Google Form in background (don’t await)
-      postToGoogleForm(payload).catch(console.error);
+      postToGoogleForm(payload);
+      openMailDraft(subject, buildEmailBody(payload));
 
 
       setStatus("Submitted! Your email draft should open now.");
