@@ -32,8 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildEmailBody(data) {
     return [
-      "Dear Lui Omura, 
-      we would like to inquire an estimated quote for the following project.",
+      "Dear Lui Omura, we would like to inquire an estimated quote for the following project.",
       "",
       `Full Name: ${data.fullName}`,
       `Phone: ${data.phone}`,
@@ -107,7 +106,7 @@ function postToGoogleForm(data) {
     const phone    = document.getElementById("phone")?.value.trim() || "";
     const email    = document.getElementById("email")?.value.trim() || "";
     const zip      = document.getElementById("zip")?.value.trim() || "";
-    const project  = document.getElementById("project")?.value()  || "";
+    const project  = document.getElementById("project")?.value || "";
     const budget   = document.getElementById("budget")?.value || "";
     const details  = document.getElementById("details")?.value.trim() || "";
 
@@ -124,8 +123,7 @@ function postToGoogleForm(data) {
       openMailDraft(subject, buildEmailBody(payload));
       
       // Send to Google Form in background (don’t await)
-      postToGoogleForm(payload);
-      openMailDraft(subject, buildEmailBody(payload));
+      postToGoogleForm(payload
 
 
       setStatus("Submitted! Your email draft should open now.");
