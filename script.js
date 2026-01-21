@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildEmailBody(data) {
     return [
-      "Dear Lui Omura, we would like to inquire an estimated quote for the following project.",
+      "Dear Lui Omura, 
+      we would like to inquire an estimated quote for the following project.",
       "",
       `Full Name: ${data.fullName}`,
       `Phone: ${data.phone}`,
