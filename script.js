@@ -20,17 +20,18 @@
   // 1) Your Google Form "formResponse" endpoint:
   // Example format:
   // https://docs.google.com/forms/d/e/FORM_ID/formResponse
-  const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+  const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/1u8jdamQHqGgSchlyv9S0ZmoJr1-4wRc5Bb9VG4eqriw/formResponse
+";
 
   // 2) Map each website field to its Google Form "entry.X" ID:
   // You MUST replace the values below (entry.111, entry.222...) with your real entry IDs.
   const ENTRY = {
-    fullName: "entry.1111111111",
-    phone:    "entry.2222222222",
-    email:    "entry.3333333333",
-    zip:      "entry.4444444444",
-    budget:   "entry.5555555555",
-    details:  "entry.6666666666"
+    fullName: "entry.500061655",
+    phone:    "entry.1378254976",
+    email:    "entry.849408615",
+    zip:      "entry.1202126100",
+    budget:   "entry.1119469797",
+    details:  "entry.892290026"
   };
 
   // Where the email should go:
