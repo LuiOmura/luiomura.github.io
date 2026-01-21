@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     phone:    "entry.1378254976",
     email:    "entry.849408615",
     zip:      "entry.1202126100",
+    project:  "entry.604523920",
     budget:   "entry.1119469797",
     details:  "entry.892290026"
   };
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `Phone: ${data.phone}`,
       `Email: ${data.email}`,
       `Zip Code: ${data.zip}`,
+      `Project: ${data.project}`,
       `Budget: ${data.budget}`,
       "",
       "Project Details:",
@@ -82,6 +84,7 @@ function postToGoogleForm(data) {
   add(ENTRY.phone, data.phone);
   add(ENTRY.email, data.email);
   add(ENTRY.zip, data.zip);
+  add(ENTRY.project, data.project);
   add(ENTRY.budget, data.budget);
   add(ENTRY.details, data.details || "");
 
@@ -104,15 +107,16 @@ function postToGoogleForm(data) {
     const phone    = document.getElementById("phone")?.value.trim() || "";
     const email    = document.getElementById("email")?.value.trim() || "";
     const zip      = document.getElementById("zip")?.value.trim() || "";
+    const project  = document.getElementById("project")?.value()  || "";
     const budget   = document.getElementById("budget")?.value || "";
     const details  = document.getElementById("details")?.value.trim() || "";
 
-    if (!fullName || !phone || !email || !zip || !budget) {
+    if (!fullName || !phone || !email || !zip || !project || !budget) {
       setStatus("Please fill in all required fields (*) before submitting.");
       return;
     }
 
-    const payload = { fullName, phone, email, zip, budget, details };
+    const payload = { fullName, phone, email, zip, project, budget, details };
 
     try {
       setStatus("Submitting…");
