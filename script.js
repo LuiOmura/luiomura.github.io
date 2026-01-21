@@ -12,7 +12,7 @@
   }
 })();
 
-<script>
+
   // ==============================
   // CONFIG: Replace these placeholders
   // ==============================
@@ -20,8 +20,7 @@
   // 1) Your Google Form "formResponse" endpoint:
   // Example format:
   // https://docs.google.com/forms/d/e/FORM_ID/formResponse
-  const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/1u8jdamQHqGgSchlyv9S0ZmoJr1-4wRc5Bb9VG4eqriw/formResponse
-";
+  const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/1u8jdamQHqGgSchlyv9S0ZmoJr1-4wRc5Bb9VG4eqriw/formResponse";
 
   // 2) Map each website field to its Google Form "entry.X" ID:
   // You MUST replace the values below (entry.111, entry.222...) with your real entry IDs.
@@ -104,8 +103,6 @@
     const zip      = document.getElementById("zip").value.trim();
     const budget   = document.getElementById("budget").value;
     const details  = document.getElementById("details").value.trim();
-    const photoInp = document.getElementById("photo");
-    const photoName = photoInp.files && photoInp.files[0] ? photoInp.files[0].name : "";
 
     // Basic required validation
     if (!fullName || !phone || !email || !zip || !budget) {
@@ -133,5 +130,5 @@
       setStatus("We couldn’t submit right now. Please try again or call (908) 937-8083.");
     }
   });
-</script>
+
 
