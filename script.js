@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Quote script loaded ✅");
 
-  // Year
+  // Footer year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // CONFIG
+  // === CONFIG: Google Form POST endpoint (must be /forms/d/<ID>/formResponse) ===
   const GOOGLE_FORM_ENDPOINT =
-    "https://docs.google.com/forms/d/e/1u8jdamQHqGgSchlyv9S0ZmoJr1-4wRc5Bb9VG4eqriw/formResponse";
+    "https://docs.google.com/forms/d/1u8jdamQHqGgSchlyv9S0ZmoJr1-4wRc5Bb9VG4eqriw/formResponse";
 
+  // === Map your site fields to Google Form entry IDs ===
+  // IMPORTANT: Confirm these match your form's fields.
   const ENTRY = {
     fullName: "entry.500061655",
     phone:    "entry.1378254976",
@@ -19,42 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
     details:  "entry.892290026"
   };
 
-  const TO_EMAIL = "luiomuracontractor@gmail.com";
-
   const form = document.getElementById("quoteForm");
   const statusEl = document.getElementById("quoteStatus");
-
-  console.log("quoteForm found:", !!form);
+  const submitBtn = document.getElementById("quoteSubmitBtn");
 
   function setStatus(msg) {
     if (statusEl) statusEl.textContent = msg;
   }
 
-  function buildEmailBody(data) {
-    return [
-      "Dear Lui Omura, we would like to inquire an estimated quote for the following project.",
-      "",
-      `Full Name: ${data.fullName}`,
-      `Phone: ${data.phone}`,
-      `Email: ${data.email}`,
-      `Zip Code: ${data.zip}`,
-      `Project: ${data.project}`,
-      `Budget: ${data.budget}`,
-      "",
-      "Project Details:",
-      data.details ? data.details : "(not provided)"
-    ].join("\n");
-  }
-
-  function openMailDraft(subject, body) {
-    const url =
-      `mailto:${encodeURIComponent(TO_EMAIL)}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
-    window.location.href = url;
+  function setSubmitting(isSubmitting) {
+    if (!submitBtn) return;
+    submitBtn.disabled = isSubmitting;
+    submitBtn.textContent = isSubmitting ? "Submitting…" : "Submit";
   }
 
   function postToGoogleForm(data) {
+    // Create (or reuse) a hidden iframe target
     let iframe = document.getElementById("hidden_iframe_gf");
     if (!iframe) {
       iframe = document.createElement("iframe");
@@ -64,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(iframe);
     }
 
+    // Create a temporary form to POST to Google Forms
     const f = document.createElement("form");
     f.action = GOOGLE_FORM_ENDPOINT;
     f.method = "POST";
@@ -73,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const input = document.createElement("input");
       input.type = "hidden";
       input.name = name;
-      input.value = value || "";
+      input.value = value ?? "";
       f.appendChild(input);
     };
 
@@ -97,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Submit clicked ✅");
 
     const fullName = document.getElementById("fullName")?.value.trim() || "";
     const phone    = document.getElementById("phone")?.value.trim() || "";
@@ -107,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const budget   = document.getElementById("budget")?.value || "";
     const details  = document.getElementById("details")?.value.trim() || "";
 
+    // Basic required validation (matches your * fields)
     if (!fullName || !phone || !email || !zip || !project || !budget) {
       setStatus("Please fill in all required fields (*) before submitting.");
       return;
@@ -115,20 +98,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const payload = { fullName, phone, email, zip, project, budget, details };
 
     try {
+      setSubmitting(true);
       setStatus("Submitting…");
 
-      // 1) Submit to Google Form (hidden, reliable)
+      // Submit silently to Google Form
       postToGoogleForm(payload);
 
-      // 2) Open email draft (user must click Send)
-      const subject = `Quote Request — ${fullName} (${zip})`;
-      openMailDraft(subject, buildEmailBody(payload));
-
-      setStatus("Submitted! Your email draft should open now.");
+      // We can’t reliably detect success (cross-domain), so we show a confident UX message
+      setStatus("Submitted! We received your request and will contact you shortly.");
       form.reset();
+
+      // Optional: clear message after a bit
+      setTimeout(() => setStatus(""), 8000);
     } catch (err) {
       console.error("Submit error:", err);
       setStatus("We couldn’t submit right now. Please try again or call (908) 937-8083.");
+    } finally {
+      setSubmitting(false);
     }
   });
 });
