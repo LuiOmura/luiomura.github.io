@@ -36,14 +36,16 @@
     <!-- Hero -->
     <section class="hero hero-bg">
       <div class="hero-overlay"></div>
-      
+
       <div class="container hero-inner">
         <h1 class="hero-title">Lui Omura Contractor LLC</h1>
         <p class="hero-tagline">Professional • Quality • Service</p>
-        
+
         <div class="hero-card">
           <h2 class="hero-card-title">Home Improvements Done Right</h2>
-          <p class="hero-card-text">Locally owned New Jersey contractor delivering high-quality renovations with honest guidance and reliable craftsmanship.</p>
+          <p class="hero-card-text">
+            Locally owned New Jersey contractor delivering high-quality renovations with honest guidance and reliable craftsmanship.
+          </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Get a Free Estimate</a>
             <a class="btn btn-ghost" href="#portfolio">View Our Work</a>
@@ -89,7 +91,7 @@
         <div class="content-card">
           <div class="gallery-grid">
             <article class="gallery-card">
-              <h3>Kitchen Renovation</h3>  
+              <h3>Kitchen Renovation</h3>
               <div class="ba-grid">
                 <figure class="ba">
                   <span class="ba-label">Before</span>
@@ -97,11 +99,11 @@
                 </figure>
                 <figure class="ba">
                   <span class="ba-label">After</span>
-                  <img src="images/kitchen-after.JPG" alt="Kitchen renovation after photo" loading="lazy" />                  
+                  <img src="images/kitchen-after.JPG" alt="Kitchen renovation after photo" loading="lazy" />
                 </figure>
               </div>
             </article>
-            
+
             <article class="gallery-card">
               <h3>Bathroom Renovation</h3>
               <div class="ba-grid">
@@ -115,7 +117,7 @@
                 </figure>
               </div>
             </article>
-            
+
             <article class="gallery-card">
               <h3>Living Room Renovation</h3>
               <div class="ba-grid">
@@ -129,7 +131,7 @@
                 </figure>
               </div>
             </article>
-            
+
             <article class="gallery-card">
               <h3>Flooring Renovation</h3>
               <div class="ba-grid">
@@ -139,7 +141,7 @@
                 </figure>
                 <figure class="ba">
                   <span class="ba-label">After</span>
-                  <img src="images/flooring-after.JPG" alt="Flooing renovation after photo" loading="lazy" />
+                  <img src="images/flooring-after.JPG" alt="Flooring renovation after photo" loading="lazy" />
                 </figure>
               </div>
             </article>
@@ -152,79 +154,84 @@
     <section id="contact" class="section section-last">
       <div class="container">
         <h2 class="section-title">Contact</h2>
+
         <div class="grid-2 contact-grid">
-         
+
+          <!-- Quote -->
           <div class="content-card">
             <h3 class="card-title">Request a Quote</h3>
             <p class="card-text">Tell us about your project and we’ll get back to you quickly.</p>
-            
-             <div class="quote-card">
-               <form id="quoteForm" class="quote-form" novalidate>
-                 <div class="form-grid">
-                   <div class="field">
-                     <label for="fullName">Full name <span class="req">*</span></label>
-                     <input id="fullName" name="fullName" type="text" autocomplete="name" required />
-                     <small class="hint">Required</small>
-                   </div>
-                   
-                   <div class="field">
-                     <label for="phone">Phone number <span class="req">*</span></label>
-                     <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-                     <small class="hint">Required</small>
-                   </div>
-                   
-                   <div class="field">
-                     <label for="email">Email <span class="req">*</span></label>
-                     <input id="email" name="email" type="email" autocomplete="email" required />
-                     <small class="hint">Required</small>
-                   </div>
-                   
-                   <div class="field">
-                     <label for="zip">Zip code <span class="req">*</span></label>
-                     <input id="zip" name="zip" type="text" inputmode="numeric" required />
-                     <small class="hint">Required</small>
-                   </div>
 
-                   <div class="field">
-                     <label for="project">Project <span class="req">*</span></label>
-                     <select id="project" name="project" required>  
-                       <option value="" selected disabled>Select one</option>
-                       <option value="Bathroom remodels">Bathroom remodels</option>
-                       <option value="Kitchen remodels">kitchen remodels</option>
-                       <option value="Living Room Remodels">Living room remodels</option>
-                       <option value="Flooring">Flooring</option>
-                       <option value="Repairs">Repairs</option>
-                       <option value="Other">Other</option>
-                     </select>
-                     <small class="hint">Required</small>
-                   </div>
-                   
-                   <div class="field">
-                     <label for="budget">Budget <span class="req">*</span></label>
-                     <select id="budget" name="budget" required>
-                       <option value="" selected disabled>Select one</option>
-                       <option value="0 to 5K">0 to 5K</option>
-                       <option value="5K to 10K">5K to 10K</option>
-                       <option value="10K to 20K">10K to 20K</option>
-                       <option value="20K Plus">20K Plus</option>
-                     </select>
-                     <small class="hint">Required</small>
-                   </div>
-                   
-                   <div class="field field-wide">
-                     <label for="details">Project details <span class="opt">(optional)</span></label>
-                     <textarea id="details" name="details" rows="5" placeholder="Describe the work you’d like done..."></textarea>
-                   </div>
-                 </div>
-                 
-                 <div class="form-actions">
-                   <button type="submit" class="btn-primary">Submit</button>
-                   <p id="quoteStatus" class="form-status" aria-live="polite"></p>
-                 </div>
-               </form>
-             </div>
+            <div class="quote-card">
+              <form id="quoteForm" class="quote-form" novalidate>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="fullName">Full name <span class="req">*</span></label>
+                    <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+                    <small class="hint">Required</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="phone">Phone number <span class="req">*</span></label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+                    <small class="hint">Required</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="email">Email <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" autocomplete="email" required />
+                    <small class="hint">Required</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="zip">Zip code <span class="req">*</span></label>
+                    <input id="zip" name="zip" type="text" inputmode="numeric" required />
+                    <small class="hint">Required</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="project">Project <span class="req">*</span></label>
+                    <select id="project" name="project" required>
+                      <option value="" selected disabled>Select one</option>
+                      <option value="Bathroom remodels">Bathroom remodels</option>
+                      <option value="Kitchen remodels">Kitchen remodels</option>
+                      <option value="Living Room Remodels">Living room remodels</option>
+                      <option value="Flooring">Flooring</option>
+                      <option value="Repairs">Repairs</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <small class="hint">Required</small>
+                  </div>
+
+                  <div class="field">
+                    <label for="budget">Budget <span class="req">*</span></label>
+                    <select id="budget" name="budget" required>
+                      <option value="" selected disabled>Select one</option>
+                      <option value="0 to 5K">0 to 5K</option>
+                      <option value="5K to 10K">5K to 10K</option>
+                      <option value="10K to 20K">10K to 20K</option>
+                      <option value="20K Plus">20K Plus</option>
+                    </select>
+                    <small class="hint">Required</small>
+                  </div>
+
+                  <div class="field field-wide">
+                    <label for="details">Project details <span class="opt">(optional)</span></label>
+                    <textarea id="details" name="details" rows="5" placeholder="Describe the work you’d like done..."></textarea>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button id="quoteSubmitBtn" type="submit" class="btn btn-primary">
+                    Submit
+                  </button>
+                  <p id="quoteStatus" class="form-status" aria-live="polite"></p>
+                </div>
+              </form>
             </div>
+          </div>
 
+          <!-- Reach us -->
           <div class="content-card">
             <h3 class="card-title">Reach Us</h3>
             <p class="card-text">
@@ -238,6 +245,7 @@
               <a class="btn btn-ghost btn-block" href="tel:+19089378083">Call Now</a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -249,9 +257,7 @@
     </footer>
 
   </main>
-  
-  <script src="script.js" defer>
-  </script>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
