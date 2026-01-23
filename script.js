@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === CONFIG: Google Form POST endpoint (must be /forms/d/<ID>/formResponse) ===
   const GOOGLE_FORM_ENDPOINT =
-    "https://docs.google.com/forms/d/1u8jdamQHqGgSchlyv9S0ZmoJr1-4wRc5Bb9VG4eqriw/formResponse";
+    "https://docs.google.com/forms/d/e/1FAIpQLSdmQCnaL1LxI5rPXo83IvYppoxIrL8Ztq2pUKsTZcSMw_TxoQ/viewform?usp=dialog";
 
   // === Map your site fields to Google Form entry IDs ===
   // IMPORTANT: Confirm these match your form's fields.
