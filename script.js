@@ -12,10 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Map your site fields to Google Form entry IDs ===
   // IMPORTANT: Confirm these match your form's fields.
   const ENTRY = {
-    fullName: "entry.500061655",
+    FirstName: "entry.500061655",
+    LastName: "entry.231511378",
     phone:    "entry.1378254976",
     email:    "entry.849408615",
-    zip:      "entry.1202126100",
+    zip:      "entry.1664953559",
     project:  "entry.604523920",
     budget:   "entry.1119469797",
     details:  "entry.892290026"
@@ -60,7 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
       f.appendChild(input);
     };
 
-    add(ENTRY.fullName, data.fullName);
+    add(ENTRY.FirstName, data.fullName);
+    add(ENTRY.LastName, data.fullName);
     add(ENTRY.phone, data.phone);
     add(ENTRY.email, data.email);
     add(ENTRY.zip, data.zip);
@@ -81,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const fullName = document.getElementById("fullName")?.value.trim() || "";
+    const FirstName = document.getElementById("FirstName")?.value.trim() || "";
+    const LastName = document.getElementById("LastName")?.value.trim() || "";
     const phone    = document.getElementById("phone")?.value.trim() || "";
     const email    = document.getElementById("email")?.value.trim() || "";
     const zip      = document.getElementById("zip")?.value.trim() || "";
@@ -90,12 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const details  = document.getElementById("details")?.value.trim() || "";
 
     // Basic required validation (matches your * fields)
-    if (!fullName || !phone || !email || !zip || !project || !budget) {
+    if (!FirstName || !FirstName || !phone || !email || !zip || !project || !budget) {
       setStatus("Please fill in all required fields (*) before submitting.");
       return;
     }
 
-    const payload = { fullName, phone, email, zip, project, budget, details };
+    const payload = { FirstName, LastName, phone, email, zip, project, budget, details };
 
     try {
       setSubmitting(true);
