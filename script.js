@@ -91,12 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const FirstName = document.getElementById("FirstName")?.value.trim() || "";
     const LastName = document.getElementById("LastName")?.value.trim() || "";
-    const PhoneNumber    = document.getElementById("Phone")?.value.trim() || "";
+    const PhoneNumber    = document.getElementById("PhoneNumber")?.value.trim() || "";
     const Email    = document.getElementById("Email")?.value.trim() || "";
-    const ZipCode      = document.getElementById("Zip")?.value.trim() || "";
+    const ZipCode      = document.getElementById("ZipCode")?.value.trim() || "";
     const Project  = document.getElementById("Project")?.value || "";
     const Budget   = document.getElementById("Budget")?.value || "";
-    const ProjectDetails  = document.getElementById("Details")?.value.trim() || "";
+    const ProjectDetails  = document.getElementById("ProjectDetails")?.value.trim() || "";
 
     // Basic required validation (matches your * fields)
     if (!FirstName || !LastName || !PhoneNumber || !Email || !ZipCode || !Project || !Budget) {
